@@ -10,7 +10,9 @@ public class Main {
         System.out.println("Pocet predavanych vozidiel je :  "+offer.numberOfCars());;
         offer.printAllCars();
 
-
+        offer.removeCar(new Vehicle("Škoda Fabia", 55000, true, 5.7, VehicleType.CAR));
+        System.out.println("Pocet predavanych vozidiel je :  "+offer.numberOfCars());
+        offer.printAllCars();
 
 
 

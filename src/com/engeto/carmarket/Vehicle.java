@@ -1,6 +1,7 @@
 package com.engeto.carmarket;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Vehicle {
 //    String model = "Ford Perfect 107E";
@@ -62,4 +63,24 @@ VehicleType  vehicleType;
     public void setConsuption(double consuption) {
         this.consuption = consuption;
     }
+
+    // !!!!!!!!!  POZOR!!!!!!!!!!!!!!!!
+    //   metody porovnanvaju ci su objecty rovnake aby ich mohol odstranit
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return price == vehicle.price &&
+                isAvailable == vehicle.isAvailable &&
+                Double.compare(vehicle.consuption, consuption) == 0 &&
+                Objects.equals(make, vehicle.make) &&
+                vehicleType == vehicle.vehicleType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(make, price, isAvailable, consuption, vehicleType);
+    }
+
 }
